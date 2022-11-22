@@ -8,4 +8,8 @@ public struct Row: ExpressibleByArrayLiteral {
     public init(arrayLiteral elements: ArrayLiteralElement...) {
         self.cells = elements
     }
+
+    public init(_ values: [String]) {
+        self.cells = values
+    }
 }

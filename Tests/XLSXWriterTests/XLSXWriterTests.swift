@@ -7,7 +7,8 @@ final class XLSXWriterTests: XCTestCase {
         let tempURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(UUID().uuidString).appendingPathExtension("xlsx")
         print(tempURL)
         writer.addRow(["Date", "Merchant", "Amount"])
-        writer.addRow(["2022-01-01", "1", "2"])
+        writer.addRow(["2022-01-01", "Auchan", "2"])
+        writer.addRow(["2022-01-02", "Craco", "2", "3"])
         try writer.generate(outputFileURL: tempURL)
     }
 

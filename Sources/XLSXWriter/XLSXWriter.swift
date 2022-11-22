@@ -93,10 +93,10 @@ public class XLSXWriter {
                 let fieldValueNo = sharedStringNo(cellValue);
 
                 cellsXML.append(String(
-                    format: ###"<c r="%@" t="%@"><v>%d</v></c>"###,
+                    format: ###"<c r="%@" t="%@"><v>%@</v></c>"###,
                     cellName(row: rowNo, col: colNo).escapeHTML,
                     fieldType,
-                    fieldValueNo
+                    cellValue.isNumber ? cellValue : String(fieldValueNo)
                 ))
             }
 
