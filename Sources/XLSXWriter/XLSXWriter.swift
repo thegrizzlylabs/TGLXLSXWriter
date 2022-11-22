@@ -1,5 +1,4 @@
 import Foundation
-import HTMLSpecialCharacters
 import ZIPFoundation
 
 public class XLSXWriter {
@@ -94,7 +93,7 @@ public class XLSXWriter {
 
                 cellsXML.append(String(
                     format: ###"<c r="%@" t="%@"><v>%@</v></c>"###,
-                    cellName(row: rowNo, col: colNo).escapeHTML,
+                    cellName(row: rowNo, col: colNo).xmlEscape(),
                     fieldType,
                     cellValue.isNumber ? cellValue : String(fieldValueNo)
                 ))
@@ -107,7 +106,7 @@ public class XLSXWriter {
                     %@
                     </row>
                     """,
-                String(rowNo + 1).escapeHTML,
+                String(rowNo + 1).xmlEscape(),
                 cellsXML.joined(separator: "\n")
             ))
         }
@@ -131,7 +130,7 @@ public class XLSXWriter {
 
         for sharedString in sharedStrings.sorted(by: { $0.value.position < $1.value.position }).map(\.key) {
             sharedStringsXML.append(String(
-                format: #"<si><t>%@</t></si>"#, sharedString.escapeHTML
+                format: #"<si><t>%@</t></si>"#, sharedString.xmlEscape()
             ))
         }
 
